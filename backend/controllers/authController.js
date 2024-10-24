@@ -20,7 +20,7 @@ exports.signup = async (req, res) => {
     // Generate token
     const token = generateToken(user.id);
 
-    res.status(201).json({ token });
+    res.status(201).json({ token, isAdmin: user.isAdmin });
   } catch (error) {
     res.status(500).json({ message: 'Server error' });
   }
@@ -28,26 +28,27 @@ exports.signup = async (req, res) => {
 
 // Login
 exports.login = async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const user = await User.findOne({ where: { email } });
-
-    if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+    const { email, password } = req.body;
+  
+    try {
+      const user = await User.findOne({ where: { email } });
+  
+      if (!user) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+  
+      // Check password
+      const isMatch = await bcrypt.compare(password, user.password);
+      if (!isMatch) {
+        return res.status(400).json({ message: 'Invalid credentials' });
+      }
+  
+      // Generate token
+      const token = generateToken(user.id);
+  
+      // Include isAdmin in the response
+      res.status(200).json({ token, isAdmin: user.isAdmin });
+    } catch (error) {
+      res.status(500).json({ message: 'Server error' });
     }
-
-    // Check password
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
-    }
-
-    // Generate token
-    const token = generateToken(user.id);
-
-    res.status(200).json({ token });
-  } catch (error) {
-    res.status(500).json({ message: 'Server error' });
-  }
-};
+  };

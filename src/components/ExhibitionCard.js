@@ -7,14 +7,25 @@ const ExhibitionCard = ({ title, description, imageUrl, link }) => {
 
   return (
     <View style={styles.itemContainer}>
-      <Image source={imageUrl} style={styles.image} />
+      {/* Ensure imageUrl is wrapped in the correct object structure */}
+      <View>
+
+      <Image source={{ uri: imageUrl }} style={styles.image} />
+      </View>
+    <View>
       <Text style={styles.title}>{title}</Text>
+    </View>
+    <View>
+
       <Text style={styles.description}>{description}</Text>
+    </View>
       {link && (
+      <View>
         <Button
           title="Learn More"
           onPress={() => navigation.navigate(link)} // Optional navigation
-        />
+          />
+        </View>
       )}
     </View>
   );
@@ -43,4 +54,3 @@ const styles = StyleSheet.create({
 });
 
 export default ExhibitionCard;
- 
