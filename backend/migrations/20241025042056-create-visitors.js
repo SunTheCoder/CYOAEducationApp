@@ -1,39 +1,36 @@
 'use strict';
-
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.createTable('Surveys', {
+    await queryInterface.createTable('Visitors', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      exhibitionId: {
         type: Sequelize.INTEGER,
-        allowNull: false,
-        references: {
-          model: 'Exhibitions', // Foreign key reference to Exhibitions table
-          key: 'id',
-        },
-        onDelete: 'CASCADE',
       },
-      title: {
+      name: {
         type: Sequelize.STRING,
         allowNull: false,
       },
+      email: {
+        type: Sequelize.STRING,
+        allowNull: false,
+      },
+      phone: {
+        type: Sequelize.STRING,
+        allowNull: true, // Optional field
+      },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
-
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.dropTable('Surveys');
-  }
+    await queryInterface.dropTable('Visitors');
+  },
 };

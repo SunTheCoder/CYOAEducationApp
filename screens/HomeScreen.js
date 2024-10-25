@@ -73,20 +73,22 @@ useEffect(() => {
     <View style={styles.container}>
       
       {isAdmin && (
-    <View>
-        <Button
-          title="Create New Exhibition"
-          onPress={() => navigation.navigate('CreateExhibition')} // Navigate to Create Exhibition Screen
-        />
-    </View>
-      )}
-
-      {isAdmin && (
         <View>
-            <Button
-                title="Create Survey"
-                onPress={() => navigation.navigate('CreateSurvey')}
-            />
+          {/* Button to Create Exhibition */}
+          <Button
+            title="Create New Exhibition"
+            onPress={() => navigation.navigate('CreateExhibition')}
+          />
+          {/* Button to Create Survey */}
+          <Button
+            title="Create New Survey"
+            onPress={() => navigation.navigate('CreateSurvey')}
+          />
+          {/* Button to View Surveys */}
+          <Button
+            title="View Surveys"
+            onPress={() => navigation.navigate('SurveyView')} // Navigate to SurveyViewScreen
+          />
         </View>
       )}
 

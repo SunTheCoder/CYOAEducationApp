@@ -1,21 +1,33 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('../config/database'); // Ensure you have your Sequelize connection configured
+// models/Exhibition.js
+const { Model, DataTypes } = require('sequelize');
+const sequelize = require('../config/database');
 
-const Exhibition = sequelize.define('Exhibition', {
-  title: {
-    type: DataTypes.STRING,
-    allowNull: false,
+class Exhibition extends Model {
+  static associate(models) {
+    Exhibition.hasMany(models.Survey, { foreignKey: 'exhibitionId', onDelete: 'CASCADE' });
+  }
+}
+
+Exhibition.init(
+  {
+    title: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    description: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    imageUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
-  description: {
-    type: DataTypes.TEXT,
-    allowNull: false,
-  },
-  imageUrl: {
-    type: DataTypes.STRING,
-    allowNull: true, // Optional
-  },
-}, {
-  timestamps: true, // Adds createdAt and updatedAt fields automatically
-});
+  {
+    sequelize,
+    modelName: 'Exhibition',
+    timestamps: true,
+  }
+);
 
 module.exports = Exhibition;

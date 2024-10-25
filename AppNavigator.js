@@ -5,6 +5,7 @@ import HomeScreen from './screens/HomeScreen';
 import LoginSignupScreen from './screens/LoginSignupScreen';
 import CreateExhibitionScreen from './screens/CreateExhibitionScreen';
 import CreateSurveyScreen from './screens/CreateSurveyScreen';
+import SurveyViewScreen from './screens/SurveyViewScreen';
 
 const Stack = createStackNavigator();
 
@@ -16,6 +17,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="CreateExhibition" component={CreateExhibitionScreen} />
         <Stack.Screen name="CreateSurvey" component={CreateSurveyScreen} />
+        <Stack.Screen name="SurveyView" component={SurveyViewScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

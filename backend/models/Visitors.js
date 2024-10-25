@@ -1,35 +1,28 @@
-// models/User.js
+// models/Visitor.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
-class User extends Model {}
+class Visitor extends Model {}
 
-User.init(
+Visitor.init(
   {
-    username: {
+    name: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
-      unique: true,
     },
-    password: {
+    phone: {
       type: DataTypes.STRING,
-      allowNull: false,
-    },
-    isAdmin: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {
     sequelize,
-    modelName: 'User',
+    modelName: 'Visitor',
   }
 );
 
-module.exports = User;
+module.exports = Visitor;
