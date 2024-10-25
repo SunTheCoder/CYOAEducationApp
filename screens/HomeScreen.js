@@ -80,6 +80,16 @@ useEffect(() => {
         />
     </View>
       )}
+
+      {isAdmin && (
+        <View>
+            <Button
+                title="Create Survey"
+                onPress={() => navigation.navigate('CreateSurvey')}
+            />
+        </View>
+      )}
+
     <View>
         <ExhibitionList sections={exhibitionsData} /> 
     </View>
