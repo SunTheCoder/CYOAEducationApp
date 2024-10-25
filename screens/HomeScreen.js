@@ -51,18 +51,27 @@ const HomeScreen = ({ navigation, route }) => {
   }, []);
   
 
+ 
   // Adding newly created exhibition from CreateExhibitionScreen
-  useEffect(() => {
-    if (route.params?.newExhibition) {
-      setExhibitionsData((prevData) => [...prevData, route.params.newExhibition]);
-    }
-  }, [route.params?.newExhibition]);
+useEffect(() => {
+  if (route.params?.newExhibition) {
+    const newExhibition = route.params.newExhibition;
+
+    // Create a copy of the existing exhibitionsData
+    const updatedData = [...exhibitionsData];
+
+    // Assuming the new exhibition goes in the 'Current Exhibitions' section (index 0)
+    updatedData[0].data = [newExhibition, ...updatedData[0].data]; // Add to the beginning of the array
+
+    setExhibitionsData(updatedData); // Update the state with the modified array
+  }
+}, [route.params?.newExhibition]);
+
+  
 
   return (
     <View style={styles.container}>
-      <View>
-        <ExhibitionList sections={exhibitionsData} /> {/* Display fetched exhibitions */}
-    </View>
+      
       {isAdmin && (
     <View>
         <Button
@@ -71,6 +80,11 @@ const HomeScreen = ({ navigation, route }) => {
         />
     </View>
       )}
+    <View>
+        <ExhibitionList sections={exhibitionsData} /> 
+    </View>
+
+
     </View>
   );
 };

@@ -41,7 +41,7 @@ const CreateExhibitionScreen = ({ navigation }) => {
       const data = await response.json();
       if (response.ok) {
         console.log('Exhibition created:', data);
-        navigation.navigate('Home'); // Navigate back to the home page
+        navigation.navigate('Home', { newExhibition: data }); // Pass new exhibition data
       } else {
         console.log('Failed to create exhibition:', data.message);
       }

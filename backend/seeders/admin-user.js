@@ -10,8 +10,8 @@ module.exports = {
       // Insert the admin user into the Users table
       await queryInterface.bulkInsert('Users', [
         {
-          username: 'admin3',
-          email: 'admin3@admin.com',
+          username: 'admin6',
+          email: 'admin6@admin.com',
           password: passwordHash,
           isAdmin: true,
           createdAt: new Date(),
