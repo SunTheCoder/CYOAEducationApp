@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
-import ExhibitionList from '../src/components/ExhibitionList'; // Import ExhibitionList
-import AsyncStorage from '@react-native-async-storage/async-storage'; // To store the token
+import { View, Text, Button, StyleSheet, Alert } from 'react-native';
+import ExhibitionList from '../src/components/ExhibitionList'; 
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { ScrollView } from 'react-native-web';
 
 const HomeScreen = ({ navigation, route }) => {
-  const [isAdmin, setIsAdmin] = useState(route.params?.isAdmin || false); // To check if the user is an admin
-  const [exhibitionsData, setExhibitionsData] = useState([]); // State to hold fetched exhibitions data
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [exhibitionsData, setExhibitionsData] = useState([]);
 
   // Function to check if the user is an admin
   useEffect(() => {
@@ -13,91 +14,73 @@ const HomeScreen = ({ navigation, route }) => {
       const token = await AsyncStorage.getItem('token');
       if (token) {
         const response = await fetch('http://localhost:5000/api/auth/check-admin', {
-          headers: { Authorization: `Bearer ${token}` }
+          headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
         setIsAdmin(data.isAdmin);
       }
     };
-    checkAdminStatus(); 
-  }, []);
+    checkAdminStatus();
+  }, [route.params?.isAdmin]);
 
-  // Fetch exhibitions from backend
+  const handleGuest = async () => {
+    await AsyncStorage.removeItem('token');
+    setIsAdmin(false);
+    Alert.alert("Guest Access", "You are now browsing as a guest.");
+  };
+
+  const navigateToLogin = () => {
+    navigation.navigate('LoginSignup');
+  };
+
+  const navigateToSignup = () => {
+    navigation.navigate('LoginSignup');
+  };
+
   useEffect(() => {
     const fetchExhibitions = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/exhibitions');
         const data = await response.json();
-  
-        // Manually grouping into sections on the frontend
+
         const sections = [
-          {
-            
-            data: data.slice(0, 2), // Assuming first 2 are current
-          },
-          {
-            
-            data: data.slice(2), // Rest are upcoming
-          },
+          { data: data.slice(0, 2) },
+          { data: data.slice(2) },
         ];
-  
-        setExhibitionsData(sections); // Set the grouped data to the state
+
+        setExhibitionsData(sections);
       } catch (error) {
         console.error('Error fetching exhibitions:', error);
       }
     };
-  
+
     fetchExhibitions();
   }, []);
-  
-
- 
-  // Adding newly created exhibition from CreateExhibitionScreen
-useEffect(() => {
-  if (route.params?.newExhibition) {
-    const newExhibition = route.params.newExhibition;
-
-    // Create a copy of the existing exhibitionsData
-    const updatedData = [...exhibitionsData];
-
-    // Assuming the new exhibition goes in the 'Current Exhibitions' section (index 0)
-    updatedData[0].data = [newExhibition, ...updatedData[0].data]; // Add to the beginning of the array
-
-    setExhibitionsData(updatedData); // Update the state with the modified array
-  }
-}, [route.params?.newExhibition]);
-
-  
 
   return (
+    <ScrollView>
     <View style={styles.container}>
       
+          <Text style={styles.title}>Longwood Center for the Visual Arts</Text>
+      {/* <Button title="Guest" onPress={handleGuest} /> */}
+
       {isAdmin && (
-        <View>
-          {/* Button to Create Exhibition */}
-          <Button
-            title="Create New Exhibition"
-            onPress={() => navigation.navigate('CreateExhibition')}
-          />
-          {/* Button to Create Survey */}
-          <Button
-            title="Create New Survey"
-            onPress={() => navigation.navigate('CreateSurvey')}
-          />
-          {/* Button to View Surveys */}
-          <Button
-            title="View Surveys"
-            onPress={() => navigation.navigate('SurveyView')} // Navigate to SurveyViewScreen
-          />
+        <View style={styles.adminContainer}>
+          <Button title="Create New Exhibition" onPress={() => navigation.navigate('CreateExhibition')} />
+          <Button title="Create New Survey" onPress={() => navigation.navigate('CreateSurvey')} />
+          <Button title="View Surveys" onPress={() => navigation.navigate('SurveyView')} />
         </View>
       )}
+      
+     
 
-    <View>
-        <ExhibitionList sections={exhibitionsData} /> 
+      <ExhibitionList sections={exhibitionsData} />
+       <View style={styles.loginSignupBox}>
+          <Button title="Login" onPress={navigateToLogin} />
+          <Button title="Signup" onPress={navigateToSignup} />
+      </View>
     </View>
-
-
-    </View>
+    </ScrollView>
   );
 };
 
@@ -107,9 +90,22 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginTop: 20,
   },
-  text: {
+  title: {
     fontSize: 24,
+    fontWeight: 'bold',
+    marginBottom: 20,
   },
+  adminContainer: {
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  loginSignupBox: {
+    width: 200,
+    paddingBottom: 20,
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between'
+  }
 });
 
 export default HomeScreen;

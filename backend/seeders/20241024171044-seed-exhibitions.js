@@ -20,9 +20,10 @@ module.exports = {
         updatedAt: new Date(),
       },
       {
-        title: 'Exhibition Three',
+        title: 'Of Time, and The Town',
         description: 'An upcoming exhibition featuring abstract sculptures and digital art.',
-        imageUrl: 'https://example.com/exhibition3.jpg',
+        imageUrl: 'https://lcva.longwood.edu/wp-content/uploads/2024/08/Screenshot-299.png',
+        link: 'https://lcva.longwood.edu/event/of-time-and-the-town/',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
