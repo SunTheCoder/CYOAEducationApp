@@ -62,7 +62,7 @@ const HomeScreen = ({ navigation, route }) => {
     <ScrollView>
     <View style={styles.container}>
       
-          <Text style={styles.title}>Welcome to the {'\n'} Longwood Center for the Visual Arts</Text>
+          <Text style={styles.title}>Welcome to the{'\n'}Longwood Center for the Visual Arts{'\n'}Portal</Text>
       {/* <Button title="Guest" onPress={handleGuest} /> */}
 
       {isAdmin && (

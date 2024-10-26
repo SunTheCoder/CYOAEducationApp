@@ -22,6 +22,10 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: true,
       },
+      optionLink: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       surveyLink: {
         type: Sequelize.STRING,
         allowNull: true,

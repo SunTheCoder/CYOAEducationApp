@@ -4,7 +4,7 @@ import { useNavigation } from '@react-navigation/native';
 import { Linking } from 'react-native';
 
 
-const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink }) => {
+const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, optionLink }) => {
   const navigation = useNavigation();
 
   return (
@@ -36,6 +36,15 @@ const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink }) => {
         <Button
           title="Survey"
           onPress={() => Linking.openURL(surveyLink)}
+          />
+        </View>
+      )}
+      {optionLink && (
+      <View style={styles.button}>
+        
+        <Button
+          title="Interactive Features & Resources"
+          onPress={() => Linking.openURL(optionLink)}
           />
         </View>
       )}

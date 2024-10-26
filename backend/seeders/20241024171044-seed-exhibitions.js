@@ -9,6 +9,7 @@ module.exports = {
         imageUrl: 'https://lcva.longwood.edu/wp-content/uploads/2024/08/Bady-Kitty-Starry-Night-1.jpg',
         link: 'https://lcva.longwood.edu/event/bad-kitty-does-not-like-art-museums-2/',
         surveyLink: 'https://docs.google.com/forms/d/e/1FAIpQLScU3PsVCtCWAzyHbxIqa7yf-yK1A2OLYW0R500ZWyZbAp91CQ/viewform?usp=sf_link',
+        optionLink: 'https://badkittycomicgame.netlify.app/',
         createdAt: new Date(),
         updatedAt: new Date(),
       },
