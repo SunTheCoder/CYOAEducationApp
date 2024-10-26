@@ -16,6 +16,7 @@ const ExhibitionList = ({ sections = [] }) => {
           description={item.description}
           imageUrl={item.imageUrl}
           link={item.link}
+          surveyLink={item.surveyLink}
         />
       </View>
       )}

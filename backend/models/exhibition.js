@@ -29,6 +29,13 @@ Exhibition.init(
         isUrl: true,
       },
     },
+    surveyLink: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isUrl: true,
+      },
+    },
   },
   {
     sequelize,

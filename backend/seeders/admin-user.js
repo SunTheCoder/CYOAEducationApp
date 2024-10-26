@@ -1,32 +1,32 @@
-'use strict';
+// 'use strict';
 
-const bcrypt = require('bcryptjs');
+// const bcrypt = require('bcryptjs');
 
-module.exports = {
-  up: async (queryInterface, Sequelize) => {
-    try {
-      const passwordHash = await bcrypt.hash('admin_password', 10); // Hash the admin password
+// module.exports = {
+//   up: async (queryInterface, Sequelize) => {
+//     try {
+//       const passwordHash = await bcrypt.hash('admin_password', 10); // Hash the admin password
 
-      // Insert the admin user into the Users table
-      await queryInterface.bulkInsert('Users', [
-        {
-          username: 'admin15',
-          email: 'admin15@admin.com',
-          password: passwordHash,
-          isAdmin: true,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        },
-      ], {});
+//       // Insert the admin user into the Users table
+//       await queryInterface.bulkInsert('Users', [
+//         {
+//           username: 'admin17',
+//           email: 'admin17@admin.com',
+//           password: passwordHash,
+//           isAdmin: true,
+//           createdAt: new Date(),
+//           updatedAt: new Date(),
+//         },
+//       ], {});
 
-      console.log('Admin user seeded');
-    } catch (error) {
-      console.error('Error seeding admin user:', error);
-    }
-  },
+//       console.log('Admin user seeded');
+//     } catch (error) {
+//       console.error('Error seeding admin user:', error);
+//     }
+//   },
 
-  down: async (queryInterface, Sequelize) => {
-    // Delete the seeded admin user
-    await queryInterface.bulkDelete('Users', { username: 'admin' }, {});
-  }
-};
+//   down: async (queryInterface, Sequelize) => {
+//     // Delete the seeded admin user
+//     await queryInterface.bulkDelete('Users', { username: 'admin' }, {});
+//   }
+// };

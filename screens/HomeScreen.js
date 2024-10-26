@@ -42,6 +42,7 @@ const HomeScreen = ({ navigation, route }) => {
       try {
         const response = await fetch('http://localhost:5000/api/exhibitions');
         const data = await response.json();
+        console.log(data)
 
         const sections = [
           { data: data.slice(0, 2) },
