@@ -61,7 +61,7 @@ const HomeScreen = ({ navigation, route }) => {
     <ScrollView>
     <View style={styles.container}>
       
-          <Text style={styles.title}>Longwood Center for the Visual Arts</Text>
+          <Text style={styles.title}>Welcome to the {'\n'} Longwood Center for the Visual Arts</Text>
       {/* <Button title="Guest" onPress={handleGuest} /> */}
 
       {isAdmin && (
@@ -94,6 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 20,
+    textAlign: 'center',
   },
   adminContainer: {
     marginTop: 20,
