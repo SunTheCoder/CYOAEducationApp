@@ -1,6 +1,7 @@
 import React from 'react';
 import { SectionList, Text, View, StyleSheet } from 'react-native';
-import ExhibitionCard from './ExhibitionCard'; 
+import ExhibitionCard from './ExhibitionCard';
+
 
 const ExhibitionList = ({ sections = [] }) => {
   return (
@@ -14,6 +15,7 @@ const ExhibitionList = ({ sections = [] }) => {
           title={item.title}
           description={item.description}
           imageUrl={item.imageUrl}
+          link={item.link}
         />
       </View>
       )}

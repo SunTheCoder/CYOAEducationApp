@@ -4,7 +4,7 @@ import ExhibitionList from '../src/components/ExhibitionList'; // Import Exhibit
 import AsyncStorage from '@react-native-async-storage/async-storage'; // To store the token
 
 const HomeScreen = ({ navigation, route }) => {
-  const [isAdmin, setIsAdmin] = useState(false); // To check if the user is an admin
+  const [isAdmin, setIsAdmin] = useState(route.params?.isAdmin || false); // To check if the user is an admin
   const [exhibitionsData, setExhibitionsData] = useState([]); // State to hold fetched exhibitions data
 
   // Function to check if the user is an admin

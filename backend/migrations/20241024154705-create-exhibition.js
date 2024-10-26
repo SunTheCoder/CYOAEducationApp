@@ -18,6 +18,10 @@ module.exports = {
       imageUrl: {
         type: Sequelize.STRING
       },
+      link: {
+        type: Sequelize.STRING,
+        allowNull: true,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

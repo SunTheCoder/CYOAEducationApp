@@ -7,6 +7,12 @@ const LoginSignupScreen = ({ navigation }) => {
   const [password, setPassword] = useState('');
   const [username, setUsername] = useState('');
 
+  const handleGuest = async () => {
+    await AsyncStorage.removeItem('token'); // Ensure no token is stored
+    navigation.navigate('Home', { isAdmin: false });
+  };
+  
+
   // Function to handle login
   const handleLogin = async () => {
     try {
@@ -95,6 +101,7 @@ const LoginSignupScreen = ({ navigation }) => {
       </View>
       <Button title="Login" onPress={handleLogin} />
       <Button title="Signup" onPress={handleSignup} />
+      <Button title="Guest" onPress={handleGuest} />
     </View>
   );
 };

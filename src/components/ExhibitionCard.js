@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Linking } from 'react-native';
+
 
 const ExhibitionCard = ({ title, description, imageUrl, link }) => {
   const navigation = useNavigation();
@@ -23,7 +25,7 @@ const ExhibitionCard = ({ title, description, imageUrl, link }) => {
       <View>
         <Button
           title="Learn More"
-          onPress={() => navigation.navigate(link)} // Optional navigation
+          onPress={() => Linking.openURL(link)}
           />
         </View>
       )}
