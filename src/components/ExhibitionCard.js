@@ -22,15 +22,17 @@ const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink }) => {
       <Text style={styles.description}>{description}</Text>
     </View>
       {link && (
-      <View>
+      <View style={styles.button}>
         <Button
+          
           title="Learn More"
           onPress={() => Linking.openURL(link)}
           />
         </View>
       )}
       {surveyLink && (
-      <View>
+      <View style={styles.button}>
+        
         <Button
           title="Survey"
           onPress={() => Linking.openURL(surveyLink)}
@@ -62,6 +64,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 10,
   },
+  button: {
+    margin: 10,
+  }
 });
 
 export default ExhibitionCard;
