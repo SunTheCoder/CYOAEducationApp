@@ -36,6 +36,13 @@ Exhibition.init(
         isUrl: true,
       },
     },
+    adminSurveyLink: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      validate: {
+        isUrl: true,
+      },
+    },
     optionLink: {
       type: DataTypes.STRING,
       allowNull: true,

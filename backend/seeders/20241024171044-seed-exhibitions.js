@@ -10,6 +10,7 @@ module.exports = {
         link: 'https://lcva.longwood.edu/event/bad-kitty-does-not-like-art-museums-2/',
         surveyLink: 'https://docs.google.com/forms/d/e/1FAIpQLScU3PsVCtCWAzyHbxIqa7yf-yK1A2OLYW0R500ZWyZbAp91CQ/viewform?usp=sf_link',
         optionLink: 'https://badkittycomicgame.netlify.app/',
+        adminSurveyLink: 'https://docs.google.com/forms/d/1OinoR_bVewX2xSRJ5IZ94JywhDCxjHvdaa185qw0xQE/edit',
         createdAt: new Date(),
         updatedAt: new Date(),
       },

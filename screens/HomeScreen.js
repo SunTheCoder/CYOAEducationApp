@@ -63,7 +63,10 @@ const HomeScreen = ({ navigation, route }) => {
     <View style={styles.container}>
       
           <Text style={styles.title}>Welcome to the{'\n'}Longwood Center for the Visual Arts{'\n'}Portal</Text>
-      {/* <Button title="Guest" onPress={handleGuest} /> */}
+       <View style={styles.loginSignupBox}>
+          <Button title="Login" onPress={navigateToLogin} />
+          <Button title="Signup" onPress={navigateToSignup} />
+      </View>
 
       {isAdmin && (
         <View style={styles.adminContainer}>
@@ -73,13 +76,11 @@ const HomeScreen = ({ navigation, route }) => {
         </View>
       )}
       
+      <Button title="Tester" onPress={() => navigation.navigate('SurveyScreen')} />
      
 
       <ExhibitionList sections={exhibitionsData} />
-       <View style={styles.loginSignupBox}>
-          <Button title="Login" onPress={navigateToLogin} />
-          <Button title="Signup" onPress={navigateToSignup} />
-      </View>
+      
     </View>
     </ScrollView>
   );

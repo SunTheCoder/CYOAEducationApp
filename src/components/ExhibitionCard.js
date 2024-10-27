@@ -1,15 +1,35 @@
 import React from 'react';
 import { View, Text, Image, Button, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
+
 import { Linking } from 'react-native';
 
 
-const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, optionLink }) => {
+const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, optionLink, adminSurveyLink }) => {
   const navigation = useNavigation();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  // Function to check if the user is an admin
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      const token = await AsyncStorage.getItem('token');
+      if (token) {
+        const response = await fetch('http://localhost:5000/api/auth/check-admin', {
+          headers: { Authorization: `Bearer ${token}` },
+        });
+        const data = await response.json();
+        setIsAdmin(data.isAdmin);
+      }
+    };
+    checkAdminStatus();
+  }, []);
 
   return (
     <View style={styles.itemContainer}>
-      {/* Ensure imageUrl is wrapped in the correct object structure */}
+    
       <View>
 
       <Image source={{ uri: imageUrl }} style={styles.image} />
@@ -45,6 +65,14 @@ const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, option
         <Button
           title="Interactive Features & Resources"
           onPress={() => Linking.openURL(optionLink)}
+          />
+        </View>
+      )}
+      {isAdmin && (
+        <View style={styles.button}>
+          <Button
+          title="Survey Edit Link"
+          onPress={() => Linking.openURL(adminSurveyLink)}
           />
         </View>
       )}
