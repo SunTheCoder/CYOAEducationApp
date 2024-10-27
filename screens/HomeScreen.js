@@ -3,10 +3,13 @@ import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import ExhibitionList from '../src/components/ExhibitionList'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native-web';
+import { Linking } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = ({ navigation, route }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [exhibitionsData, setExhibitionsData] = useState([]);
+  
 
   // Function to check if the user is an admin
   useEffect(() => {
@@ -29,6 +32,10 @@ const HomeScreen = ({ navigation, route }) => {
     Alert.alert("Guest Access", "You are now browsing as a guest.");
   };
 
+
+  const reloadPage = () => {
+    navigation.replace('Home'); // Replace the current screen with itself
+  };
   const navigateToLogin = () => {
     navigation.navigate('LoginSignup');
   };
@@ -66,17 +73,20 @@ const HomeScreen = ({ navigation, route }) => {
        <View style={styles.loginSignupBox}>
           <Button title="Login" onPress={navigateToLogin} />
           <Button title="Signup" onPress={navigateToSignup} />
+          <Button title="Logout" onPress={() => { AsyncStorage.removeItem('token'); reloadPage(); }} />
       </View>
 
       {isAdmin && (
         <View style={styles.adminContainer}>
           <Button title="Create New Exhibition" onPress={() => navigation.navigate('CreateExhibition')} />
-          <Button title="Create New Survey" onPress={() => navigation.navigate('CreateSurvey')} />
-          <Button title="View Surveys" onPress={() => navigation.navigate('SurveyView')} />
+          <Button title="Create New Survey" onPress={() => Linking.openURL('https://docs.google.com/forms/u/0/create')} />
+          
+          {/* <Button title="Create New Survey" onPress={() => navigation.navigate('CreateSurvey')} /> */}
+          {/* <Button title="View Surveys" onPress={() => navigation.navigate('SurveyView')} /> */}
         </View>
       )}
       
-      <Button title="Tester" onPress={() => navigation.navigate('SurveyScreen')} />
+      {/* <Button title="Tester" onPress={() => navigation.navigate('SurveyScreen')} /> */}
      
 
       <ExhibitionList sections={exhibitionsData} />
@@ -103,7 +113,7 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   loginSignupBox: {
-    width: 200,
+    width: 250,
     paddingBottom: 20,
     flex: 1,
     flexDirection: 'row',
