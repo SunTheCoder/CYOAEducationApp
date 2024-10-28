@@ -12,7 +12,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sunenglishjr.MyNewExhibitionApp"
     },
     "android": {
       "adaptiveIcon": {
@@ -22,6 +23,11 @@
     },
     "web": {
       "favicon": "assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "e7bb70f9-613b-438f-9800-3b779b16dc04"
+      }
     }
   }
 }

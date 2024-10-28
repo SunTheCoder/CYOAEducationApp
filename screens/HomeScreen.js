@@ -5,9 +5,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { ScrollView } from 'react-native-web';
 import { Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import LoginSignupModal from '../src/components/LoginSignupModal';
 
 const HomeScreen = ({ navigation, route }) => {
   const [isAdmin, setIsAdmin] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [exhibitionsData, setExhibitionsData] = useState([]);
   
 
@@ -16,6 +18,7 @@ const HomeScreen = ({ navigation, route }) => {
     const checkAdminStatus = async () => {
       const token = await AsyncStorage.getItem('token');
       if (token) {
+        setIsLoggedIn(true)
         const response = await fetch('http://localhost:5000/api/auth/check-admin', {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -28,8 +31,17 @@ const HomeScreen = ({ navigation, route }) => {
 
   const handleGuest = async () => {
     await AsyncStorage.removeItem('token');
+    setIsLoggedIn(false);
     setIsAdmin(false);
     Alert.alert("Guest Access", "You are now browsing as a guest.");
+  };
+
+  const handleLogout = async () => {
+    await AsyncStorage.removeItem('token');
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    Alert.alert("Logged Out", "You have successfully logged out.");
+    navigation.replace('Home');
   };
 
 
@@ -70,11 +82,17 @@ const HomeScreen = ({ navigation, route }) => {
     <View style={styles.container}>
       
           <Text style={styles.title}>Welcome to the{'\n'}Longwood Center for the Visual Arts{'\n'}Portal</Text>
+          {/* <Button title="Login" onPress={navigateToLogin} />
+          <Button title="Signup" onPress={navigateToSignup} /> */}
        <View style={styles.loginSignupBox}>
-          <Button title="Login" onPress={navigateToLogin} />
-          <Button title="Signup" onPress={navigateToSignup} />
-          <Button title="Logout" onPress={() => { AsyncStorage.removeItem('token'); reloadPage(); }} />
-      </View>
+          {!isLoggedIn ? (
+            // Show Login/Signup modal button if not logged in
+            <LoginSignupModal />
+          ) : (
+            // Show Logout button if logged in
+            <Button title="Logout" onPress={handleLogout} color="red" />
+          )}
+        </View>
 
       {isAdmin && (
         <View style={styles.adminContainer}>
@@ -117,7 +135,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     flex: 1,
     flexDirection: 'row',
-    justifyContent: 'space-between'
+    justifyContent: 'center'
   }
 });
 
