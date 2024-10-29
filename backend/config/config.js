@@ -2,8 +2,7 @@ require('dotenv').config(); // Load environment variables
 
 module.exports = {
   development: {
-    use_env_variable: 'DATABASE_URL',
-    
+    use_env_variable: process.env.DATABASE_URL,
     dialect: 'postgres'
   },
   test: {
@@ -14,7 +13,7 @@ module.exports = {
     dialect: 'postgres'
   },
   production: {
-    use_env_variable: 'DATABASE_URL', // This will use the full DATABASE_URL connection string
+    use_env_variable: process.env.DATABASE_URL,
     dialect: 'postgres'
   }
 };
