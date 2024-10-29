@@ -23,11 +23,13 @@ const ExhibitionList = ({ sections = [] }) => {
       </View>
       )}
       
+      
       renderSectionHeader={({ section: { title } }) => (
         <View>
           <Text style={styles.header}>{title}</Text>
         </View>
       )}
+      
       ListEmptyComponent={
         <View>
           <Text>No Exhibitions Available</Text>

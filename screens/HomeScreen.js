@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, Button, StyleSheet, Alert } from 'react-native';
 import ExhibitionList from '../src/components/ExhibitionList'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { ScrollView } from 'react-native-web';
+
 import { Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LoginSignupModal from '../src/components/LoginSignupModal';
@@ -78,12 +78,11 @@ const HomeScreen = ({ navigation, route }) => {
   }, []);
 
   return (
-    <ScrollView>
+    
     <View style={styles.container}>
       
           <Text style={styles.title}>Welcome to the{'\n'}Longwood Center for the Visual Arts{'\n'}Portal</Text>
-          {/* <Button title="Login" onPress={navigateToLogin} />
-          <Button title="Signup" onPress={navigateToSignup} /> */}
+          
        <View style={styles.loginSignupBox}>
           {!isLoggedIn ? (
             // Show Login/Signup modal button if not logged in
@@ -99,18 +98,17 @@ const HomeScreen = ({ navigation, route }) => {
           <Button title="Create New Exhibition" onPress={() => navigation.navigate('CreateExhibition')} />
           <Button title="Create New Survey" onPress={() => Linking.openURL('https://docs.google.com/forms/u/0/create')} />
           
-          {/* <Button title="Create New Survey" onPress={() => navigation.navigate('CreateSurvey')} /> */}
-          {/* <Button title="View Surveys" onPress={() => navigation.navigate('SurveyView')} /> */}
+         
         </View>
       )}
       
-      {/* <Button title="Tester" onPress={() => navigation.navigate('SurveyScreen')} /> */}
+      
      
 
       <ExhibitionList sections={exhibitionsData} />
       
     </View>
-    </ScrollView>
+    
   );
 };
 

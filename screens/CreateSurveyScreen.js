@@ -103,7 +103,6 @@ const CreateSurveyScreen = ({ navigation }) => {
         style={styles.input}
       />
 
-      {/* Dynamic list of questions */}
       {questions.map((question, index) => (
         <View key={index} style={styles.questionContainer}>
           <TextInput
@@ -112,7 +111,7 @@ const CreateSurveyScreen = ({ navigation }) => {
             onChangeText={(text) => handleQuestionChange(text, index)}
             style={styles.input}
           />
-          {/* Dropdown to select question type */}
+
           <Picker
             selectedValue={question.type}
             style={styles.picker}
@@ -125,7 +124,6 @@ const CreateSurveyScreen = ({ navigation }) => {
             <Picker.Item label="Dropdown" value="dropdown" />
           </Picker>
 
-          {/* For multiple choice and dropdown, show input fields for options */}
           {(question.type === 'multiple_choice' || question.type === 'dropdown') && (
             <View>
               {question.options.map((option, optionIndex) => (
