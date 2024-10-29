@@ -7,6 +7,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Linking } from 'react-native';
 
+require('dotenv').config();
+
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 
 const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, optionLink, adminSurveyLink }) => {
   const navigation = useNavigation();
@@ -17,7 +21,7 @@ const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, option
     const checkAdminStatus = async () => {
       const token = await AsyncStorage.getItem('token');
       if (token) {
-        const response = await fetch('http://localhost:5000/api/auth/check-admin', {
+        const response = await fetch(`${BASE_URL}/api/auth/check-admin`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();

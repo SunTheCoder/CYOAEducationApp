@@ -2,6 +2,10 @@ import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
 
+require('dotenv').config();
+
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 const LoginSignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -16,7 +20,7 @@ const LoginSignupScreen = ({ navigation }) => {
   // Function to handle login
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -45,7 +49,7 @@ const LoginSignupScreen = ({ navigation }) => {
   // Function to handle signup
   const handleSignup = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
+      const response = await fetch(`${BASE_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

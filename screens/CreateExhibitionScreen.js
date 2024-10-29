@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
+require('dotenv').config();
+
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 const CreateExhibitionScreen = ({ navigation }) => {
   const [title, setTitle] = useState('');
@@ -25,7 +28,7 @@ const CreateExhibitionScreen = ({ navigation }) => {
         return;
       }
 
-      const response = await fetch('http://localhost:5000/api/exhibitions', {
+      const response = await fetch(`${BASE_URL}/api/exhibitions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

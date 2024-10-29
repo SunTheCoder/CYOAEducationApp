@@ -9,11 +9,14 @@ const LoginSignupModal = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState(''); // For signup
+  require('dotenv').config();
+
+  const BASE_URL = process.env.REACT_APP_API_URL;
 
 
   const handleLogin = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/login', {
+      const response = await fetch(`${BASE_URL}/api/auth/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -41,7 +44,7 @@ const LoginSignupModal = () => {
 
   const handleSignup = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/auth/signup', {
+      const response = await fetch(`${BASE_URL}/api/auth/signup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

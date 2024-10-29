@@ -2,6 +2,10 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
+// require('dotenv').config();
+
+
+// const BASE_URL = process.env.REACT_APP_API_URL;
 
 const SurveyScreen = () => {
   return (

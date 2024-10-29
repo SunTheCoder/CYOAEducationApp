@@ -7,6 +7,9 @@ const SurveyViewScreen = () => {
   const [exhibitionId, setExhibitionId] = useState('');
   const [surveys, setSurveys] = useState([]);
   const [error, setError] = useState(null);
+  require('dotenv').config();
+
+  const BASE_URL = process.env.REACT_APP_API_URL;
 
   // Function to fetch surveys for a given exhibition ID
   const fetchSurveys = async () => {
@@ -18,7 +21,7 @@ const SurveyViewScreen = () => {
         return;
       }
 
-      const response = await fetch(`http://localhost:5000/api/surveys/${exhibitionId}`, {
+      const response = await fetch(`${BASE_URL}/api/surveys/${exhibitionId}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       const data = await response.json();

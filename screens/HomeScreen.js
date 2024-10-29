@@ -7,6 +7,10 @@ import { Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LoginSignupModal from '../src/components/LoginSignupModal';
 
+require('dotenv').config();
+
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 const HomeScreen = ({ navigation, route }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -19,7 +23,7 @@ const HomeScreen = ({ navigation, route }) => {
       const token = await AsyncStorage.getItem('token');
       if (token) {
         setIsLoggedIn(true)
-        const response = await fetch('http://localhost:5000/api/auth/check-admin', {
+        const response = await fetch(`${BASE_URL}/api/auth/check-admin`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
@@ -59,7 +63,7 @@ const HomeScreen = ({ navigation, route }) => {
   useEffect(() => {
     const fetchExhibitions = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/exhibitions');
+        const response = await fetch(`${BASE_URL}/api/exhibitions`);
         const data = await response.json();
         console.log(data)
 

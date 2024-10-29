@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, Picker, StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // To store the token
+require('dotenv').config();
+
+const BASE_URL = process.env.REACT_APP_API_URL;
+
 
 const CreateSurveyScreen = ({ navigation }) => {
   const [surveyTitle, setSurveyTitle] = useState(''); // New state for survey title
@@ -64,7 +68,7 @@ const CreateSurveyScreen = ({ navigation }) => {
         })),
       };
   
-      const response = await fetch('http://localhost:5000/api/surveys', {
+      const response = await fetch(`${BASE_URL}/api/surveys`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
