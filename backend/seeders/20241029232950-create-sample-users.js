@@ -11,7 +11,7 @@ module.exports = {
     const hashedPassword5 = await bcrypt.hash('guestpassword', 10);
 
     // Insert users
-    await queryInterface.bulkInsert('Users', [
+    const users =[
       {
         username: 'adminUser',
         email: 'admin@example.com',
@@ -52,7 +52,14 @@ module.exports = {
         createdAt: new Date(),
         updatedAt: new Date()
       }
-    ]);
+    ];
+    await Promise.all(users.map(async user => {
+      await User.findOrCreate({
+        where: { username: user.username },
+        defaults: user
+      });
+    }));
+  
   },
 
   down: async (queryInterface, Sequelize) => {
