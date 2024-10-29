@@ -1,4 +1,4 @@
-// models/Exhibition.js
+// models/exhibition.js
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 

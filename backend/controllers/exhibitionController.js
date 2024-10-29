@@ -1,4 +1,4 @@
-const Exhibition = require('../models/Exhibition');
+const Exhibition = require('../models/exhibition');
 
 // Create a new exhibition
 const { URL } = require('url'); // Node's built-in URL validation
