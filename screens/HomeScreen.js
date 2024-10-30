@@ -7,9 +7,9 @@ import { Linking } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import LoginSignupModal from '../src/components/LoginSignupModal';
 
-require('dotenv').config();
+import Constants from 'expo-constants';
 
-const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = Constants.expoConfig.extra.apiUrl;
 
 const HomeScreen = ({ navigation, route }) => {
   const [isAdmin, setIsAdmin] = useState(false);

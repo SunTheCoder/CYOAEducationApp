@@ -7,9 +7,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Linking } from 'react-native';
 
-require('dotenv').config();
+import Constants from 'expo-constants';
 
-const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = Constants.expoConfig.extra.apiUrl;
 
 
 const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, optionLink, adminSurveyLink }) => {

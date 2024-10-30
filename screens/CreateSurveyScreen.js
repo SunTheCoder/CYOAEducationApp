@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, Text, Picker, StyleSheet, ScrollView } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // To store the token
-require('dotenv').config();
+import Constants from 'expo-constants';
 
-const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = Constants.expoConfig.extra.apiUrl;
 
 
 const CreateSurveyScreen = ({ navigation }) => {

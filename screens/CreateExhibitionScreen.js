@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
-require('dotenv').config();
+import Constants from 'expo-constants';
 
-const BASE_URL = process.env.REACT_APP_API_URL;
+const BASE_URL = Constants.expoConfig.extra.apiUrl;
 
 const CreateExhibitionScreen = ({ navigation }) => {
   const [title, setTitle] = useState('');

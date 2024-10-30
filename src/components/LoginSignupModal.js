@@ -3,15 +3,17 @@ import { Modal, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'reac
 import { Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // To store the token
 
+import Constants from 'expo-constants';
+
+const BASE_URL = Constants.expoConfig.extra.apiUrl;
+
 const LoginSignupModal = () => {
   const [modalVisible, setModalVisible] = useState(false);
   const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState(''); // For signup
-  require('dotenv').config();
-
-  const BASE_URL = process.env.REACT_APP_API_URL;
+  
 
 
   const handleLogin = async () => {

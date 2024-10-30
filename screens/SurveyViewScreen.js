@@ -3,13 +3,15 @@ import { View, TextInput, Button, Text, StyleSheet, ScrollView } from 'react-nat
 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import Constants from 'expo-constants';
+
+const BASE_URL = Constants.expoConfig.extra.apiUrl;
+
 const SurveyViewScreen = () => {
   const [exhibitionId, setExhibitionId] = useState('');
   const [surveys, setSurveys] = useState([]);
   const [error, setError] = useState(null);
-  require('dotenv').config();
-
-  const BASE_URL = process.env.REACT_APP_API_URL;
+ 
 
   // Function to fetch surveys for a given exhibition ID
   const fetchSurveys = async () => {
