@@ -125,7 +125,8 @@ const HomeScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
+    flex: 1,
+    flexGrow: 1,
     alignItems: 'center',
     marginTop: 20,
   },
@@ -142,8 +143,8 @@ const styles = StyleSheet.create({
   loginSignupBox: {
     width: 250,
     paddingBottom: 20,
-    marginBottom: 20,
-    flex: 1,
+    margin: 20,
+    // flex: 1,
     flexDirection: 'row',
     justifyContent: 'center'
   },

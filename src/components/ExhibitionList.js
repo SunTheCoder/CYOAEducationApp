@@ -5,10 +5,11 @@ import ExhibitionCard from './ExhibitionCard';
 
 const ExhibitionList = ({ sections = [] }) => {
   return (
-    <View>
+    <View style={{flex: 1}}>
     <SectionList
       sections={sections}
       keyExtractor={(item) => item.id} 
+      contentContainerStyle={{ flexGrow: 1 }}
       renderItem={({ item }) => (
       <View>
         <ExhibitionCard
