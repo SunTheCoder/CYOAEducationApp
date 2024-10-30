@@ -3,7 +3,8 @@ import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // Import AsyncStorage
 import Constants from 'expo-constants';
 
-const BASE_URL = Constants.manifest.extra.apiUrl;
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl || Constants.manifest?.extra?.apiUrl
+
 
 const CreateExhibitionScreen = ({ navigation }) => {
   const [title, setTitle] = useState('');

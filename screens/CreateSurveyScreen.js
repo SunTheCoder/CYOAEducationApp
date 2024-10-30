@@ -3,7 +3,8 @@ import { View, TextInput, Button, Text, Picker, StyleSheet, ScrollView } from 'r
 import AsyncStorage from '@react-native-async-storage/async-storage'; // To store the token
 import Constants from 'expo-constants';
 
-const BASE_URL = Constants.expoConfig.extra.apiUrl;
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl || Constants.manifest?.extra?.apiUrl
+
 
 
 const CreateSurveyScreen = ({ navigation }) => {

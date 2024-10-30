@@ -5,7 +5,8 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import Constants from 'expo-constants';
 
-const BASE_URL = Constants.expoConfig.extra.apiUrl;
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl || Constants.manifest?.extra?.apiUrl
+
 
 const SurveyViewScreen = () => {
   const [exhibitionId, setExhibitionId] = useState('');

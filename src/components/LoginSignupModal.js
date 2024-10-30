@@ -3,17 +3,21 @@ import { Modal, View, Text, TextInput, TouchableOpacity, StyleSheet } from 'reac
 import { Button } from 'react-native-elements';
 import AsyncStorage from '@react-native-async-storage/async-storage'; // To store the token
 
+
+
 import Constants from 'expo-constants';
 
-const BASE_URL = Constants.expoConfig.extra.apiUrl;
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl || Constants.manifest?.extra?.apiUrl 
 
-const LoginSignupModal = () => {
+
+const LoginSignupModal = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
-  const [isLogin, setIsLogin] = useState(true); // Toggle between login and signup
+  const [isLogin, setIsLogin] = useState(false); // Toggle between login and signup
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState(''); // For signup
   
+  console.log('Modal visible:', modalVisible);
 
 
   const handleLogin = async () => {
@@ -85,10 +89,14 @@ const LoginSignupModal = () => {
 
   return (
     <View style={styles.container}>
-      <Button
-        title="Login / Signup"
-        onPress={() => setModalVisible(true)}
-      />
+      {console.log('Rendering Login / Signup Button')}
+      <View style={{ width: 200, height: 50}}>
+        <Button
+          title="Login / Signup"
+          onPress={() => setModalVisible(true)}
+          style={{color: "#2196F3"}} // Use an explicit color that stands out
+        />
+      </View>
       <Modal
         animationType="slide"
         transparent={true}
@@ -153,6 +161,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    // marginTop: 20,
+    
   },
   modalContainer: {
     flex: 1,

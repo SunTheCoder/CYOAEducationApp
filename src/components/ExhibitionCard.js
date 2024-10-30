@@ -9,7 +9,8 @@ import { Linking } from 'react-native';
 
 import Constants from 'expo-constants';
 
-const BASE_URL = Constants.expoConfig.extra.apiUrl;
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl || Constants.manifest?.extra?.apiUrl
+
 
 
 const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, optionLink, adminSurveyLink }) => {

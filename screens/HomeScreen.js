@@ -9,7 +9,8 @@ import LoginSignupModal from '../src/components/LoginSignupModal';
 
 import Constants from 'expo-constants';
 
-const BASE_URL = Constants.expoConfig.extra.apiUrl;
+const BASE_URL = Constants.expoConfig?.extra?.apiUrl || Constants.manifest?.extra?.apiUrl
+
 
 const HomeScreen = ({ navigation, route }) => {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -91,11 +92,15 @@ const HomeScreen = ({ navigation, route }) => {
           
        <View style={styles.loginSignupBox}>
           {!isLoggedIn ? (
+            <LoginSignupModal navigation={navigation} />
+
             // Show Login/Signup modal button if not logged in
-            <LoginSignupModal />
+
           ) : (
             // Show Logout button if logged in
-            <Button title="Logout" onPress={handleLogout} color="red" />
+            <View style={{ width: 200, height: 50, marginTop: 20 }}>
+              <Button title="Logout" onPress={handleLogout} color="red" />
+            </View>
           )}
         </View>
 
@@ -120,14 +125,14 @@ const HomeScreen = ({ navigation, route }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    // flex: 1,
     alignItems: 'center',
     marginTop: 20,
   },
   title: {
     fontSize: 34,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 40,
     textAlign: 'center',
   },
   adminContainer: {
