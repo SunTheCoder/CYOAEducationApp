@@ -53,12 +53,21 @@ module.exports = {
         updatedAt: new Date()
       }
     ];
-    await Promise.all(users.map(async user => {
-      await User.findOrCreate({
-        where: { username: user.username },
-        defaults: user
-      });
-    }));
+    for (const user of users) {
+      const existingUser = await queryInterface.rawSelect(
+        'Users',
+        {
+          where: { username: user.username },
+        },
+        ['id']
+      );
+
+      if (!existingUser) {
+        // Insert user only if they don't already exist
+        await queryInterface.bulkInsert('Users', [user], {});
+      }
+    }
+  },
   
   },
 
