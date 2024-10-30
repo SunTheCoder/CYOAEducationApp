@@ -67,7 +67,7 @@ module.exports = {
         await queryInterface.bulkInsert('Users', [user], {});
       }
     }
-  },
+  
   
   },
 
