@@ -4,7 +4,7 @@ import ExhibitionList from '../src/components/ExhibitionList';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Linking } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+// import { useNavigation } from '@react-navigation/native';
 import LoginSignupModal from '../src/components/LoginSignupModal';
 
 import Constants from 'expo-constants';
@@ -16,6 +16,7 @@ const HomeScreen = ({ navigation, route }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [exhibitionsData, setExhibitionsData] = useState([]);
   
+  console.log(BASE_URL)
 
   // Function to check if the user is an admin
   useEffect(() => {
@@ -27,6 +28,7 @@ const HomeScreen = ({ navigation, route }) => {
           headers: { Authorization: `Bearer ${token}` },
         });
         const data = await response.json();
+        console.log('isAdmin',data)
         setIsAdmin(data.isAdmin);
       }
     };

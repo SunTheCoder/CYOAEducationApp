@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { WebView } from 'react-native-webview';
+// import { WebView } from 'react-native-webview';
 // require('dotenv').config();
 
 

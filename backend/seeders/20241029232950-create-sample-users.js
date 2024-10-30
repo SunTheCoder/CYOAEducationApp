@@ -12,14 +12,14 @@ module.exports = {
 
     // Insert users
     const users =[
-      {
-        username: 'adminUser',
-        email: 'admin@example.com',
-        password: hashedPassword1,
-        isAdmin: true,
-        createdAt: new Date(),
-        updatedAt: new Date()
-      },
+      // {
+      //   username: 'adminUser',
+      //   email: 'admin@example.com',
+      //   password: hashedPassword1,
+      //   isAdmin: true,
+      //   createdAt: new Date(),
+      //   updatedAt: new Date()
+      // },
       {
         username: 'regularUser1',
         email: 'user1@example.com',
@@ -62,7 +62,7 @@ module.exports = {
         ['id']
       );
 
-      if (!existingUser) {
+      if (!existingUser || !user.isAdmin) {
         // Insert user only if they don't already exist
         await queryInterface.bulkInsert('Users', [user], {});
       }

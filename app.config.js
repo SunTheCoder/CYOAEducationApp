@@ -14,7 +14,11 @@ export default {
     },
     ios: {
       supportsTablet: true,
-      bundleIdentifier: "com.sunenglishjr.MyNewExhibitionApp"
+      bundleIdentifier: "com.sunenglishjr.MyNewExhibitionApp",
+      "infoPlist": {
+        "NSCameraUsageDescription": "This app needs access to your camera to allow photo capture.",
+        "NSLocationWhenInUseUsageDescription": "This app requires your location to provide relevant exhibition information."
+      }
     },
     android: {
       adaptiveIcon: {
@@ -26,7 +30,7 @@ export default {
       favicon: "./assets/favicon.png"
     },
     extra: {
-      apiUrl: process.env.EXPO_API_URL,  // EAS Secret for API URL
+      apiUrl: process.env.REACT_APP_API_URL,  // EAS Secret for API URL
       eas: {
         projectId: "e7bb70f9-613b-438f-9800-3b779b16dc04"
       }

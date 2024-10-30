@@ -12,14 +12,7 @@
       "distribution": "internal"
     },
     "production": {
-      "autoIncrement": true,
-      "env": {
-        "JWT_SECRET": "yourSuperSecret",
-        "DATABASE_URL": "postgres://username:password@host:port/dbname",
-        "DATABASE_USERNAME": "yourUsername",
-        "DATABASE_PASSWORD": "yourPassword",
-        "DATABASE_NAME": "myexhibitiondb"
-      }
+      "autoIncrement": true
     }
   },
   "submit": {
