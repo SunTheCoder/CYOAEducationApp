@@ -98,7 +98,7 @@ const HomeScreen = ({ navigation, route }) => {
 
           ) : (
             // Show Logout button if logged in
-            <View style={{ width: 100, height: 40, margin: 20, backgroundColor: 'red', borderRadius: 5 }}>
+            <View style={{ width: 100, backgroundColor: 'red', borderRadius: 5 }}>
             <Button title="Logout" onPress={handleLogout} color="white" />
           </View>
           )}
