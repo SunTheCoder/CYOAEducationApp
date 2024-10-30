@@ -98,9 +98,9 @@ const HomeScreen = ({ navigation, route }) => {
 
           ) : (
             // Show Logout button if logged in
-            <View style={{ width: 200, height: 50, marginTop: 20 }}>
-              <Button title="Logout" onPress={handleLogout} color="red" />
-            </View>
+            <View style={{ width: 100, height: 40, margin: 20, backgroundColor: 'red', borderRadius: 5 }}>
+            <Button title="Logout" onPress={handleLogout} color="white" />
+          </View>
           )}
         </View>
 
@@ -142,10 +142,13 @@ const styles = StyleSheet.create({
   loginSignupBox: {
     width: 250,
     paddingBottom: 20,
+    marginBottom: 20,
     flex: 1,
     flexDirection: 'row',
     justifyContent: 'center'
-  }
+  },
+  
+
 });
 
 export default HomeScreen;
