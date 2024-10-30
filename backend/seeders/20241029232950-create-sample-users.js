@@ -53,6 +53,8 @@ module.exports = {
         updatedAt: new Date()
       }
     ];
+    const usersToInsert = [];
+
     for (const user of users) {
       const existingUser = await queryInterface.rawSelect(
         'Users',
@@ -63,9 +65,13 @@ module.exports = {
       );
 
       if (!existingUser || !user.isAdmin) {
-        // Insert user only if they don't already exist
-        await queryInterface.bulkInsert('Users', [user], {});
+        usersToInsert.push(user);
       }
+    }
+
+    // Insert only the users that don’t already exist
+    if (usersToInsert.length > 0) {
+      await queryInterface.bulkInsert('Users', usersToInsert, {});
     }
   
   
