@@ -2,7 +2,7 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Exhibitions', [
+    const exhibitions = [
       {
         title: 'Bad Kitty Does Not Like Art Museums',
         description: 'A whimsical exhibition featuring Bad Kitty by Nick Bruel, highlighting humorous and curious works.',
@@ -33,7 +33,24 @@ module.exports = {
         updatedAt: new Date(),
       },
       
-    ]);
+    ];
+    
+    for (const exhibition of exhibitions) {
+      try {
+        await queryInterface.bulkInsert('Exhibitions', [{
+          ...exhibition,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        }], {});
+      } catch (error) {
+        if (error.name === 'SequelizeUniqueConstraintError') {
+          console.log(`Exhibition with name "${exhibition.title}" already exists, skipping...`);
+        } else {
+          console.error('Error inserting user:', error);
+          throw error; // Throw other errors to prevent silent failure
+        }
+      }
+    }
   },
 
   down: async (queryInterface, Sequelize) => {
