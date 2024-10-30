@@ -46,7 +46,7 @@ module.exports = {
         if (error.name === 'SequelizeUniqueConstraintError') {
           console.log(`Exhibition with name "${exhibition.title}" already exists, skipping...`);
         } else {
-          console.error('Error inserting user:', error);
+          console.error('Error inserting exhibition:', error);
           throw error; // Throw other errors to prevent silent failure
         }
       }
