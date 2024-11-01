@@ -94,7 +94,7 @@ const HomeScreen = ({ navigation, route }) => {
         </View>
 <View style={{borderWidth: 1,
     borderColor: 'black', width: '100%', }}></View>
-          <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 15}}>Current Exhibitions</Text>
+          <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 35}}>Current Exhibitions</Text>
 
           
           
