@@ -148,13 +148,19 @@ const styles = StyleSheet.create({
     
   },
   adminContainer: {
-    marginTop: 20,
-    marginBottom: 20,
+    
+    backgroundColor: 'lightgrey',
+    width: '100%',
+    paddingBottom: 20
+
   },
   loginSignupBox: {
-    width: 250,
-    paddingBottom: 20,
-    margin: 20,
+    width: '100%',
+    paddingTop: 25,
+    paddingBottom: 15,
+    
+    backgroundColor: 'lightgrey',
+    
     // flex: 1,
     flexDirection: 'row',
     justifyContent: 'center'
