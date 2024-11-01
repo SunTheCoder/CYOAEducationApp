@@ -5,7 +5,7 @@ import ExhibitionCard from './ExhibitionCard';
 
 const ExhibitionList = ({ sections = [] }) => {
   return (
-    <View style={{flex: 1, borderBottomColor: 'black', borderBottomWidth: 1}}>
+    <View style={{flex: 1, borderBottomColor: 'black', borderBottomWidth: 1.7, width: '100%'}}>
       
     <SectionList
       sections={sections}
