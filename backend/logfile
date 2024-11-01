@@ -1,0 +1,32 @@
+2024-11-01 13:23:51.103 EDT [25608] LOG:  starting PostgreSQL 14.13 (Homebrew) on x86_64-apple-darwin21.6.0, compiled by Apple clang version 14.0.0 (clang-1400.0.29.202), 64-bit
+2024-11-01 13:23:51.106 EDT [25608] LOG:  listening on IPv6 address "::1", port 5432
+2024-11-01 13:23:51.106 EDT [25608] LOG:  listening on IPv4 address "127.0.0.1", port 5432
+2024-11-01 13:23:51.108 EDT [25608] LOG:  listening on Unix socket "/tmp/.s.PGSQL.5432"
+2024-11-01 13:23:51.115 EDT [25609] LOG:  database system was shut down at 2024-11-01 13:23:28 EDT
+2024-11-01 13:23:51.123 EDT [25608] LOG:  database system is ready to accept connections
+2024-11-01 13:24:04.339 EDT [25634] FATAL:  role "postgres" does not exist
+2024-11-01 13:24:52.074 EDT [25670] FATAL:  database "bobbyenglish" does not exist
+2024-11-01 13:24:57.050 EDT [25682] FATAL:  role "bobbyenglishjr" does not exist
+2024-11-01 13:25:06.726 EDT [25697] FATAL:  role "postgres" does not exist
+2024-11-01 13:25:45.495 EDT [25721] FATAL:  database "bobbyenglish" does not exist
+2024-11-01 13:26:09.388 EDT [25748] FATAL:  database "bobbyenglish" does not exist
+2024-11-01 13:26:14.428 EDT [25760] FATAL:  database "bobbyenglish" does not exist
+2024-11-01 13:27:07.867 EDT [25792] FATAL:  role "Bobbyenglish" does not exist
+2024-11-01 13:27:45.308 EDT [26391] FATAL:  role "postgres" does not exist
+2024-11-01 13:28:35.134 EDT [26406] ERROR:  database "your_database_name" does not exist
+2024-11-01 13:28:35.134 EDT [26406] STATEMENT:  GRANT ALL PRIVILEGES ON DATABASE your_database_name TO bobbyenglish;
+2024-11-01 13:29:10.988 EDT [26406] ERROR:  database "myexhibitionapp" does not exist
+2024-11-01 13:29:10.988 EDT [26406] STATEMENT:  GRANT ALL PRIVILEGES ON DATABASE myexhibitionapp TO bobbyenglish;
+2024-11-01 13:30:21.346 EDT [26406] ERROR:  syntax error at or near "GRANT" at character 33
+2024-11-01 13:30:21.346 EDT [26406] STATEMENT:  CREATE DATABASE myexhibitionapp
+	GRANT ALL PRIVILEGES ON DATABASE myexhibitionapp TO postgres;
+2024-11-01 13:30:49.637 EDT [26453] FATAL:  database "myexhibitionapp" does not exist
+2024-11-01 13:35:53.849 EDT [26406] ERROR:  syntax error at or near "SELECT" at character 31
+2024-11-01 13:35:53.849 EDT [26406] STATEMENT:  SELECT * FROM myexhibitionapp
+	SELECT * FROM myexhibitionapp;
+2024-11-01 13:36:00.070 EDT [26406] ERROR:  syntax error at or near "SELECT" at character 31
+2024-11-01 13:36:00.070 EDT [26406] STATEMENT:  SELECT * FROM myexhibitionapp
+	SELECT * FROM myexhibitionapp;
+2024-11-01 13:36:04.078 EDT [26406] ERROR:  syntax error at or near "SELECT" at character 31
+2024-11-01 13:36:04.078 EDT [26406] STATEMENT:  SELECT * FROM myexhibitionapp
+	SELECT * FROM myexhibitionapp;

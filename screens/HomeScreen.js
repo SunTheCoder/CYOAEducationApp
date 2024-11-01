@@ -90,6 +90,8 @@ const HomeScreen = ({ navigation, route }) => {
       
           <Text style={styles.title}>Welcome to the{'\n'}Longwood Center for the Visual Arts{'\n'}Portal</Text>
           
+         <ExhibitionList sections={exhibitionsData} />
+         
        <View style={styles.loginSignupBox}>
           {!isLoggedIn ? (
             <LoginSignupModal navigation={navigation} />
@@ -116,7 +118,6 @@ const HomeScreen = ({ navigation, route }) => {
       
      
 
-      <ExhibitionList sections={exhibitionsData} />
       
     </View>
     
