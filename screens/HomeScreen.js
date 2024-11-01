@@ -87,8 +87,14 @@ const HomeScreen = ({ navigation, route }) => {
   return (
     
     <View style={styles.container}>
-      
-          <Text style={styles.title}>Welcome to the{'\n'}Longwood Center for the Visual Arts{'\n'}Portal</Text>
+        
+        <View style={{borderBottomWidth: 1,
+    borderBottomColor: 'black'}}>
+          <Text >Welcome to the</Text>
+          <Text style={styles.title}>Longwood Center for the Visual Arts</Text>
+        </View>
+
+          <Text style={{fontSize: 25, fontWeight: 'bold'}}>Current Exhibitions</Text>
           
          <ExhibitionList sections={exhibitionsData} />
          
@@ -130,12 +136,15 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     alignItems: 'center',
     marginTop: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: 'black'
   },
   title: {
     fontSize: 34,
     fontWeight: 'bold',
-    marginBottom: 40,
+    // marginBottom: 60,
     textAlign: 'center',
+    
   },
   adminContainer: {
     marginTop: 20,

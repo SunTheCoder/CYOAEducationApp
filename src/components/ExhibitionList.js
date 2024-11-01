@@ -6,6 +6,7 @@ import ExhibitionCard from './ExhibitionCard';
 const ExhibitionList = ({ sections = [] }) => {
   return (
     <View style={{flex: 1}}>
+      
     <SectionList
       sections={sections}
       keyExtractor={(item) => item.id} 

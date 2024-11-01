@@ -90,11 +90,11 @@ const LoginSignupModal = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {console.log('Rendering Login / Signup Button')}
-      <View style={{ width: 200, height: 50}}>
+      <View style={{ width: 100, height: 50}}>
         <Button
-          title="Login / Signup"
+          title="Login"
           onPress={() => setModalVisible(true)}
-          style={{color: "#2196F3"}} // Use an explicit color that stands out
+          style={{color: "#2196F3", width: 100}} // Use an explicit color that stands out
         />
       </View>
       <Modal
