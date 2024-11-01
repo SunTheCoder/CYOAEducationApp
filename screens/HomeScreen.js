@@ -92,8 +92,8 @@ const HomeScreen = ({ navigation, route }) => {
           <Text style={{textAlign: 'center'}}>Welcome to the</Text>
           <Text style={styles.title}>Longwood Center for the Visual Arts</Text>
         </View>
-<View style={{borderBottomWidth: 1,
-    borderBottomColor: '#808080', width: '100%', }}></View>
+{/* <View style={{borderBottomWidth: 1,
+    borderBottomColor: '#808080', width: '100%', }}></View> */}
           <Text style={{fontSize: 20, fontWeight: 'bold', marginTop: 35}}>Current Exhibitions</Text>
 
           

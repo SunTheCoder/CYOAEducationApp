@@ -52,6 +52,7 @@ const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, option
           
           title="Learn More"
           onPress={() => Linking.openURL(link)}
+          
           />
         </View>
       )}
@@ -108,6 +109,9 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
+    
+
+
   }
 });
 
