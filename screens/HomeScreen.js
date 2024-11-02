@@ -120,14 +120,23 @@ const HomeScreen = ({ navigation, route }) => {
 
       {isAdmin && (
         <View style={styles.adminContainer}>
-          <Button title="Create New Exhibition" onPress={() => navigation.navigate('CreateExhibition')} />
+          
+
+          <TouchableOpacity style={styles.adminButtons} onPress={() => navigation.navigate('CreateExhibition')}>
+
+            <Text>Create New Exhibition</Text>
+          </TouchableOpacity>
 
 
 
 
+         
 
+          <TouchableOpacity style={styles.adminButtons} onPress={() => Linking.openURL('https://docs.google.com/forms/u/0/create')}>
 
-          <Button title="Create New Survey" onPress={() => Linking.openURL('https://docs.google.com/forms/u/0/create')} />
+            <Text>Create New Survey</Text>
+          </TouchableOpacity>
+
           
          
         </View>
@@ -161,7 +170,18 @@ const styles = StyleSheet.create({
     
     backgroundColor: 'lightgrey',
     width: '100%',
-    paddingBottom: 20
+    paddingBottom: 30,
+    alignItems: 'center',
+    // flexDirection: 'row',
+    // justifyContent: 'space-evenly'
+    
+    
+  },
+  adminButtons: {
+    padding: 5,
+    backgroundColor: '#2196F3',
+    borderRadius: 5,
+    marginBottom: 10
 
   },
   loginSignupBox: {
@@ -170,6 +190,7 @@ const styles = StyleSheet.create({
     paddingBottom: 20,
     
     backgroundColor: 'lightgrey',
+    // alignItems: 'center',
     
     // flex: 1,
     flexDirection: 'row',

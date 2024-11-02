@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, Button, StyleSheet } from 'react-native';
+import { View, Text, Image, Button, StyleSheet, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -46,43 +46,46 @@ const ExhibitionCard = ({ title, description, imageUrl, link, surveyLink, option
 
       <Text style={styles.description}>{description}</Text>
     </View>
+
+    <View style={styles.buttonContainer}>
       {link && (
       <View style={styles.button}>
-        <Button
+        <TouchableOpacity onPress={() => Linking.openURL(link)}>
           
-          title="Learn More"
-          onPress={() => Linking.openURL(link)}
+          <Text style={styles.buttonText}>Learn More</Text>
           
-          />
+          
+        </TouchableOpacity>  
         </View>
       )}
       {surveyLink && (
       <View style={styles.button}>
         
-        <Button
-          title="Survey"
-          onPress={() => Linking.openURL(surveyLink)}
-          />
+        <TouchableOpacity onPress={() => Linking.openURL(surveyLink)}>
+          <Text style={styles.buttonText}>Survey</Text>
+          
+        </TouchableOpacity>  
         </View>
       )}
       {optionLink && (
       <View style={styles.button}>
         
-        <Button
-          title="Interactive Features & Resources"
-          onPress={() => Linking.openURL(optionLink)}
-          />
+        <TouchableOpacity onPress={() => Linking.openURL(optionLink)}>
+          <Text style={styles.buttonText}>Interactive Features & Resources</Text>
+          
+        </TouchableOpacity>  
         </View>
       )}
       {isAdmin && (
         <View style={styles.button}>
-          <Button
-          title="Survey Edit Link"
-          onPress={() => Linking.openURL(adminSurveyLink)}
-          />
+          <TouchableOpacity onPress={() => Linking.openURL(adminSurveyLink)}>
+            <Text style={styles.buttonText}>Survey Edit Link</Text>
+          
+          </TouchableOpacity>
         </View>
       )}
       
+    </View>
     </View>
   );
 };
@@ -92,6 +95,9 @@ const styles = StyleSheet.create({
     padding: 10,
     borderBottomWidth: 1,
     borderBottomColor: '#ccc',
+  },
+  buttonContainer: {
+    alignItems: 'center',
   },
   image: {
     width: '100%',
@@ -109,9 +115,19 @@ const styles = StyleSheet.create({
   },
   button: {
     marginTop: 10,
+    backgroundColor: '#2196F3',
+    padding: 5,
+    borderRadius: 5,
+    
+  
     
 
 
+  },
+  buttonText: {
+    color: 'white',
+    
+    textAlign: 'center',
   }
 });
 
