@@ -90,13 +90,10 @@ const LoginSignupModal = ({ navigation }) => {
   return (
     <View style={styles.container}>
       {console.log('Rendering Login / Signup Button')}
-      <View style={{ width: 100, height: 50}}>
-        <Button
-          title="Login"
-          onPress={() => setModalVisible(true)}
-          style={{color: "#2196F3", width: 100}} // Use an explicit color that stands out
-        />
-      </View>
+      <TouchableOpacity style={styles.button} onPress={() => setModalVisible(true)}>
+          <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+          
       <Modal
         animationType="slide"
         transparent={true}
@@ -209,6 +206,18 @@ const styles = StyleSheet.create({
     color: '#2196F3',
     fontSize: 16,
   },
+  buttonText: {
+    
+  },
+  button: {
+    borderWidth: 1,
+    borderColor: '#2196F3',
+    borderRadius: 5,
+    padding: 5,
+    
+    // backgroundColor: '#2196F3',
+    // color: 'white',
+  }
 });
 
 export default LoginSignupModal;

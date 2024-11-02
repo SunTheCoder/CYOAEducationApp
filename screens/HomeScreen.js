@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Button, StyleSheet, Alert } from 'react-native';
+import { View, Text, Button, StyleSheet, Alert, TouchableOpacity } from 'react-native';
 import ExhibitionList from '../src/components/ExhibitionList'; 
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -108,15 +108,25 @@ const HomeScreen = ({ navigation, route }) => {
 
           ) : (
             // Show Logout button if logged in
-            <View style={{ width: 100, backgroundColor: 'red', borderRadius: 5 }}>
-            <Button title="Logout" onPress={handleLogout} color="white" />
-          </View>
+            
+            
+
+            <TouchableOpacity style={{ width: 60, backgroundColor: 'red', borderRadius: 5 }} onPress={handleLogout}>
+                <Text style={{textAlign: 'center', padding: 5, color: 'white'}}>Logout</Text>
+            </TouchableOpacity>
+          
           )}
         </View>
 
       {isAdmin && (
         <View style={styles.adminContainer}>
           <Button title="Create New Exhibition" onPress={() => navigation.navigate('CreateExhibition')} />
+
+
+
+
+
+
           <Button title="Create New Survey" onPress={() => Linking.openURL('https://docs.google.com/forms/u/0/create')} />
           
          
@@ -156,8 +166,8 @@ const styles = StyleSheet.create({
   },
   loginSignupBox: {
     width: '100%',
-    paddingTop: 25,
-    paddingBottom: 15,
+    paddingTop: 15,
+    paddingBottom: 20,
     
     backgroundColor: 'lightgrey',
     
